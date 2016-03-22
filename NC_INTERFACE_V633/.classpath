@@ -15,5 +15,6 @@
 	<classpathentry kind="con" path="com.yonyou.studio.ria.core.library.container/Module_Client_Library"/>
 	<classpathentry kind="con" path="com.yonyou.studio.ria.core.library.container/Module_Private_Library"/>
 	<classpathentry kind="con" path="com.yonyou.studio.ria.core.library.container/Module_Lang_Library"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/NC_QCITF_V633"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
