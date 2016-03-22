@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<module name="ec_uapesb">
+	<public>
+        <component name="NCForESBServlet" accessProtected="false" remote="false" singleton="false" tx="NONE">
+            <implementation>com.ufida.eip.adaptor.servlet.ServletForESB</implementation>
+        </component>
+        <component name="NCForESBServletAdaptor" accessProtected="false" remote="false" singleton="false" tx="NONE">
+            <implementation>com.ufida.eip.adaptor.servlet.ServletForESBAdaptor</implementation>
+        </component>
+        <component remote="false" singleton="false" tx="NONE">
+            <interface>com.ufida.eip.adaptor.service.itf.IBillDefToXsdService</interface>
+            <implementation>com.ufida.eip.adaptor.service.impl.BillDefToXsdServiceImpl</implementation>
+        </component>
+        <component remote="false" singleton="false" tx="NONE">
+            <interface>com.ufida.eip.adaptor.service.itf.INCVOToXSDService</interface>
+            <implementation>com.ufida.eip.adaptor.service.impl.NCVOToXSDServiceImpl</implementation>
+        </component>
+        <component remote="false" singleton="false" tx="NONE">
+            <interface>com.ufida.eip.adaptor.service.itf.IMDToXsdService</interface>
+            <implementation>com.ufida.eip.adaptor.service.impl.MDToXsdServiceImpl</implementation>
+        </component>
+        <component remote="false" singleton="false" tx="NONE">
+            <interface>com.ufida.eip.adaptor.service.itf.IESBClientService</interface>
+            <implementation>com.ufida.eip.adaptor.service.impl.ESBClientService</implementation>
+        </component>
+        <component remote="false" singleton="false" tx="NONE">
+            <interface>com.ufida.eip.adaptor.pfxx.plugin.IPFxxPlugin</interface>
+            <implementation>com.ufida.eip.adaptor.pfxx.plugin.impl.PFxxPluginImpl</implementation>
+        </component> 
+        <component remote="true" singleton="true" tx="CMT">
+            <interface>com.ufida.eip.service.IMetaDataToXsdService</interface>
+            <implementation>com.ufida.eip.service.impl.MetaDataToXsdServiceImpl</implementation>
+        </component>
+        <component remote="true" singleton="true" tx="CMT">
+            <interface>com.ufida.eip.service.IBillDefinitionToXsdService</interface>
+            <implementation>com.ufida.eip.service.impl.BillDefinitionToXsdServiceImpl</implementation>
+        </component>
+        <component remote="true" singleton="true" tx="CMT">
+            <interface>com.ufida.eip.nc.invoker2.INCServiceForLocator</interface>
+            <implementation>nc.bs.pfxx.NCServiceForESB2Invoker</implementation>
+        </component>
+		<component remote="true" singleton="true" tx="CMT">
+			<interface>com.ufida.eip.eis.tx.INCEISTransactionManager</interface>
+			<implementation>com.ufida.eip.eis.tx.impl.NCEISTransactionManagerImpl</implementation>
+		</component>
+	</public>
+</module> 
