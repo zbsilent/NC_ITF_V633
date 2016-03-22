@@ -56,6 +56,7 @@ public class ShowyuServlet implements IHttpServletAdaptor {
 			
 		} catch (Exception e) {
 			Logger.error("Servlet调用NC服务出现异常!");
+			response.setHeader("Content-type", "text/html;charset=UTF-8"); 
 			response.setCharacterEncoding("UTF-8");
 			response.setStatus(907);
 			response.getWriter().write(e.getMessage());
@@ -68,7 +69,7 @@ public class ShowyuServlet implements IHttpServletAdaptor {
 		try {
 			QcBillApproveItf itf = (QcBillApproveItf)NCLocator.getInstance().lookup(QcBillApproveItf.class);
 			Logger.debug("服务启用中.....");
-			String message = itf.billApprove(ms.get(1).toString(), ms.get(2).toString(), ms.get(1)==null?null:ms.get(1).toString());
+			String message = itf.billApprove(ms.get(1).toString(), ms.get(2).toString(), ms.get(3)==null?null:ms.get(3).toString());
 			response.setHeader("Content-type", "text/html;charset=UTF-8"); 
 		    ServletOutputStream output = response.getOutputStream();
 		    output.write(message.getBytes("UTF-8"));
@@ -76,11 +77,12 @@ public class ShowyuServlet implements IHttpServletAdaptor {
 		    output.close();
 		} catch (Exception e) {
 			Logger.error("Servlet调用NC服务出现异常!");
+			response.setHeader("Content-type", "text/html;charset=UTF-8"); 
 			response.setCharacterEncoding("UTF-8");
 			response.setStatus(907);
 			response.getWriter().write(e.getMessage());
 			// TODO 自动生成的 catch 块
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
 	}
@@ -106,15 +108,15 @@ public class ShowyuServlet implements IHttpServletAdaptor {
 				} else if ("5".equals(checkok)) {
 					checkok = "不合格";
 				} else {
-					message = "质量等级有误";
+					//message = "质量等级有误";
 					throw new BusinessException("质量等级有误");
 				}
 			} else {
-				message = "质质量等级不能为空";
+				//message = "质质量等级不能为空";
 				throw new BusinessException("质量等级不能为空");
 			}
-			if (primaryKey.isEmpty()) {
-				message = "报检单唯一ID不可以为空";
+			if (primaryKey.isEmpty()|| primaryKey==null) {
+				//message = "报检单唯一ID不可以为空";
 				throw new BusinessException("报检单唯一ID不可以为空");
 			}
 			rs.put(1, primaryKey);
@@ -123,11 +125,13 @@ public class ShowyuServlet implements IHttpServletAdaptor {
 			return rs;
 		}catch(Exception e){
 			Logger.error("Servlet调用NC服务出现异常!");
+			response.setHeader("Content-type", "text/html;charset=UTF-8"); 
 			response.setCharacterEncoding("UTF-8");
 			response.setStatus(907);
-			response.getWriter().write(message);
+			//response.getWriter().write(message);
+			throw new BusinessException(e.getMessage());
 		}
-		return null;
+		//return null;
 
 		
 	}
