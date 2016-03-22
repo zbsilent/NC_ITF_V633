@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<module name="ec_uapesb">
+	<public>
+        <component name="ShowyuServlet" accessProtected="false" remote="false" singleton="false" tx="NONE">
+            <implementation>nc.itf.servletqcs.servlet.servlet.ShowyuServlet</implementation>
+        </component>
+	</public>
+</module> 
